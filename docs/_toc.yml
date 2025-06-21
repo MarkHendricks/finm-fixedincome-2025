@@ -1,0 +1,51 @@
+format: jb-book
+root: index
+
+parts:
+  - caption: "Week 1"
+    chapters:
+      - file: "discussions/W.1. Interest Rate Risk"
+        title: "Interest Rate Risk"
+      - file: "discussions/W.1. Spot Curve and Discount Rates"
+        title: "Spot Curve and Discount Rates"
+      - file: "homework/Homework 1"
+        title: "Homework 1"
+      - file: "homework/Solution 1"
+        title: "Solution 1"
+  - caption: "Week 2"
+    chapters:
+      - file: "discussions/W.2. Duration and Convexity"
+        title: "Duration and Convexity"
+      - file: "homework/Homework 2"
+        title: "Homework 2"
+      - file: "homework/Solution 2"
+        title: "Solution 2"
+  - caption: "Week 3"
+    chapters:
+      - file: "discussions/W.3. Floating-Rate Notes"
+        title: "Floating-Rate Notes"
+      - file: "discussions/W.3. Swaps"
+        title: "Swaps"
+      - file: "discussions/W.3. Treasury Arbitrage in the Financial Crisis of 2008"
+        title: "Treasury Arbitrage in the Financial Crisis of 2008"
+      - file: "homework/Homework 3"
+        title: "Homework 3"
+      - file: "homework/Solution 3"
+        title: "Solution 3"
+  - caption: "Week 4"
+    chapters:
+      - file: "discussions/W.4. Forwards"
+        title: "Forwards"
+      - file: "discussions/W.4. Swap-Spread Trade"
+        title: "Swap-Spread Trade"
+      - file: "homework/Homework 4"
+        title: "Homework 4"
+      - file: "homework/Solution 4"
+        title: "Solution 4"
+
+  - caption: "Exams"
+    chapters:
+      - file: "exams/Exam - Open"
+        title: "Exam – Open"
+      - file: "exams/Solutions - Exam - Open"
+        title: "Solutions – Exam – Open"

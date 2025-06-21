@@ -1,0 +1,52 @@
+# docs/_config.yml
+
+# ─ Site metadata ───────────────────────────────────────────────────────────────
+title: "Fixed Income Markets (FINM) - Spring 2025"
+author: "Your Name or Course Team"
+language: "en"
+
+# ─ Branding & assets ────────────────────────────────────────────────────────────
+logo:     _static/university-logo.png
+favicon:  _static/favicon.png
+
+# ─ Repository settings (for “Edit on GitHub” links) ────────────────────────────
+repository:
+  url: https://github.com/MarkHendricks/finm-fixedincome-2025
+  branch: main
+  path_to_book: docs/
+
+# ─ Notebook execution ─────────────────────────────────────────────────────────
+execute:
+  execute_notebooks: force
+  timeout: 600
+  use_cache: false
+
+# ─ Launch badges ────────────────────────────────────────────────────────────────
+launch_buttons:
+  notebook_interface: jupyterlab
+  binderhub_url: https://mybinder.org
+  colab_url: https://colab.research.google.com
+  thebe: false
+
+# ─ MyST / Sphinx extensions ─────────────────────────────────────────────────────
+sphinx:
+  extra_extensions:
+    - myst_nb
+
+# ─ Suppress specific warnings ───────────────────────────────────────────────────
+suppress_warnings:
+  - myst.header      # non-consecutive header level warnings
+  - pygments.lexer  # plaintext lexer warnings
+
+# ─ HTML theme & styling ─────────────────────────────────────────────────────────
+html_theme: sphinx_book_theme
+html_static_path: ['_static']
+html_css_files:
+  - custom.css
+
+html_theme_options:
+  collapse_navigation: false    # keep sidebar expanded
+  show_navbar_depth: 4          # display 4 levels deep
+  use_edit_page_button: true    # “Edit this page” button
+  repository_url: https://github.com/MarkHendricks/finm-fixedincome-2025
+  path_to_docs: docs/

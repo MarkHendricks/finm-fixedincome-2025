@@ -1,0 +1,71 @@
+# .github/workflows/build-book.yml
+name: Build & Deploy Jupyter Book
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      execution_mode:
+        description: 'Notebook execution mode (force | auto | off)'
+        required: false
+        type: choice
+        options: [ force, auto, off ]
+        default: force
+      section:
+        description: 'Which section(s) to build (all | discussions | homework | exams)'
+        required: false
+        type: choice
+        options: [ all, discussions, homework, exams ]
+        default: all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Book dependencies
+        run: pip install -r docs/requirements-docs.txt
+
+      - name: Configure notebook execution
+        run: |
+          MODE="${{ github.event.inputs.execution_mode }}"
+          MODE="${MODE:-force}"
+          sed -i "s/execute_notebooks:.*/execute_notebooks: $MODE/" docs/_config.yml
+
+      - name: Select TOC
+        run: |
+          SECTION="${{ github.event.inputs.section }}"
+          SECTION="${SECTION:-all}"
+          if [ "$SECTION" != "all" ]; then
+            cp docs/_toc_${SECTION}.yml docs/_toc.yml
+          fi
+
+      - name: Stage discussion & homework notebooks
+        run: |
+          rm -rf docs/discussions docs/homework
+          mkdir -p docs/discussions docs/homework
+          cp discussions/*.ipynb docs/discussions/
+          cp homework/*.ipynb   docs/homework/
+
+      - name: Stage exam notebooks
+        run: |
+          rm -rf docs/exams
+          mkdir -p docs/exams
+          cp exams/*.ipynb docs/exams/
+
+      - name: Generate TOC automatically
+        run: python docs/generate_toc.py
+
+      - name: Build the book
+        run: jupyter-book build docs/
+
+      - name: Publish to GitHub Pages
+        run: ghp-import -n -p -f docs/_build/html

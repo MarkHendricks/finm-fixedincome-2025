@@ -1,0 +1,21 @@
+/* docs/_static/custom.css */
+
+/* Maroon brand overrides */
+:root {
+  --theme-color-primary: #800000 !important;
+  --theme-color-accent:  #800000 !important;
+}
+
+/* Navbar background */
+header .navbar {
+  background-color: #800000 !important;
+}
+header .navbar .nav-link.active {
+  color: white !important;
+}
+
+/* Sidebar hover state */
+.sidebar .nav-link:hover,
+.sidebar .nav-link:focus {
+  color: #800000 !important;
+}

@@ -175,3 +175,11 @@ cython_debug/
 dev/
 
 .vscode/
+
+
+
+/docs/discussions/
+/docs/homework/
+/docs/exams/
+
+/build-book-local.sh
